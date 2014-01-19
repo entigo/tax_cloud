@@ -7,6 +7,12 @@ module TaxCloud #:nodoc:
     attr_accessor :api_key
     # Optional USPS username.
     attr_accessor :usps_username
+    # Savon Logger
+    attr_accessor :savon_logger
+    # Savon Log Level
+    attr_accessor :savon_log_level
+    # Savon Log Enabler
+    attr_accessor :savon_log
 
     # Check the configuration.
     #

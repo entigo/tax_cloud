@@ -3,7 +3,11 @@ module TaxCloud #:nodoc:
   class Client < Savon::Client
     # Create a new client.
     def initialize
-      super wsdl: TaxCloud::WSDL_URL
+      client_configuration = {wsdl: TaxCloud::WSDL_URL}
+      client_configuration[:logger] = TaxCloud.configuration.savon_logger unless TaxCloud.configuration.savon_logger.nil?
+      client_configuration[:log_level] = TaxCloud.configuration.savon_log_level unless TaxCloud.configuration.savon_log_level.nil?
+      client_configuration[:log] = TaxCloud.configuration.savon_log unless TaxCloud.configuration.savon_log.nil?
+      super client_configuration
     end
 
     # Make a safe SOAP call.
